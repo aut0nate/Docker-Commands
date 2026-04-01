@@ -95,14 +95,14 @@ docker rm <container_name_or_id>
 # Force remove a container (running or stopped)
 docker rm -f <container_name_or_id>
 
+# Remove containers with a status of exited
+docker rm $(docker ps -aq -f status=exited)
+
 # List running containers
 docker ps
 
 # List all containers (including stopped)
 docker ps -a
-
-# List all container IDs and remove them
-docker ps -aq | xargs docker rm
 ```
 
 [⬆ ʀᴇᴛᴜʀɴ ᴛᴏ ᴄᴏɴᴛᴇɴᴛꜱ](#contents)
@@ -160,6 +160,9 @@ docker rmi <image_name_or_id>
 ```bash
 # Fetch logs of a container
 docker logs <container_name_or_id>
+
+# Fetch last ~n logs of a container including timestamp
+docker logs -t -n <n> <container_name_or_id>
 
 # Display live resource usage stats for a container
 docker stats <container_name_or_id>
